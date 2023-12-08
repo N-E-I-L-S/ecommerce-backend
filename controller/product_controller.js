@@ -5,6 +5,7 @@ const Products = require("../models/products")
 // Get All Products
 router.get('/', function (req, res, next) {
     Products.find({}).then(function (product) {
+        res.status(200)
         res.send(product);
     }).catch(next);
 });
@@ -12,6 +13,7 @@ router.get('/', function (req, res, next) {
 //Get One Product
 router.get('/id/:id', function (req, res, next) {
     Products.findOne({id: req.params.id}).then(function(product){
+        res.status(200)
         res.send(product);
     }).catch(next);
 });
@@ -26,6 +28,7 @@ router.get('/id/:id', function (req, res, next) {
 // add a new Product 
 router.post('/',function(req,res,next){
     Products.create(req.body).then(function(product){
+        res.status(200)
         res.send(product);
     }).catch(next);
 });
@@ -34,6 +37,7 @@ router.post('/',function(req,res,next){
 router.put('/:id',function(req,res,next){
     Products.findOneAndUpdate({id: req.params.id},req.body).then(function(product){
         Products.findOne({id: req.params.id}).then(function(product){
+            res.status(200)
             res.send(product);
         });
     });
@@ -42,6 +46,7 @@ router.put('/:id',function(req,res,next){
 // delete a Product 
 router.delete('/:id',function(req,res,next){
     Products.findOneAndDelete({id: req.params.id}).then(function(product){
+        res.status(200)
         res.send(product);
     });
 });
@@ -49,6 +54,7 @@ router.delete('/:id',function(req,res,next){
 // delete all Products
 router.delete('/',function(req,res,next){
     Products.deleteMany(req.body).then(function(product){
+        res.status(200)
         res.send(product);
     }).catch(next);
 });

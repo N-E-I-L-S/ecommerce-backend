@@ -6,13 +6,19 @@ const UserSchema = new Schema({
             type : String,
             required: true,
         },
-        uid: {
+        password:{
             type: String,
-            required: true,
+            required:true
         },
-        order:{
-            type: Object,
-            required: true,
+        addressadded:{
+            type: Boolean,
+            required: false,
+            default: false
+        },
+        address:{
+            type: String,
+            required: false,
         }
+
 });
 module.exports = mongoose.model('allusers', UserSchema)
